@@ -7,7 +7,7 @@ from datetime import datetime
 from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
-    page_title="Mining & Investment Risk Dashboard",
+    page_title="Global Asset Risk Dashboard",
     layout="wide"
 )
 
@@ -44,7 +44,7 @@ is_cn = lang == "中文"
 
 txt = {
     "title": "全球资产风险监控平台" if is_cn else "Global Asset Risk Dashboard",
-    "subtitle": "标普500、VIX、黄金、铜、原油与美元人民币风险监控" if is_cn else "Risk monitoring for SPY, VIX, gold, copper, crude oil and USD/CNY",
+    "subtitle": "标普500ETF、VIX、黄金、铜、原油与美元人民币风险监控" if is_cn else "Risk monitoring for SPY, VIX, Gold, Copper, Crude Oil and USD/CNY",
     "last_update": "最后更新时间" if is_cn else "Last Updated",
     "refresh": "自动刷新频率" if is_cn else "Auto Refresh Interval",
     "risk_window": "风险计算窗口" if is_cn else "Risk Window",
@@ -81,11 +81,8 @@ st_autorefresh(
 )
 
 window = st.sidebar.slider(txt["risk_window"], 10, 120, 20)
-
 confidence = st.sidebar.selectbox(txt["confidence"], [0.95, 0.99], index=0)
-
 mc_days = st.sidebar.slider(txt["mc_days"], 5, 120, 30)
-
 mc_paths = st.sidebar.slider(txt["mc_paths"], 500, 10000, 3000, step=500)
 
 with top_left:
